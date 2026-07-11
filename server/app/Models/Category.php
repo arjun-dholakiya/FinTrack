@@ -7,28 +7,22 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Category extends Model
 {
-    use HasFactory;
+   use HasFactory;
 
-    protected $fillable = [
-        'user_id',
-        'name',
-        'type',
-        'icon',
-        'color',
-    ];
+   protected $fillable = ['user_id', 'name', 'type', 'icon', 'color'];
 
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
+   public function user()
+   {
+      return $this->belongsTo(User::class);
+   }
 
-    public function transactions()
-    {
-        return $this->hasMany(Transaction::class);
-    }
-    
-    public function budgets()
-    {
-        return $this->hasMany(Budget::class);
-    }
+   public function transactions()
+   {
+      return $this->hasMany(Transaction::class);
+   }
+
+   public function budgets()
+   {
+      return $this->hasMany(Budget::class);
+   }
 }
