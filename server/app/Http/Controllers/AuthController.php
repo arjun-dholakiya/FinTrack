@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\LoginRequest;
-use App\Http\Requests\RegisterRequest;
-use App\Http\Resources\AuthResource;
-use App\Http\Resources\UserResource;
+use Illuminate\Http\Request;
 use App\Services\AuthService;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
+use App\Http\Requests\LoginRequest;
+use App\Http\Resources\AuthResource;
+use App\Http\Resources\UserResource;
+use App\Http\Requests\RegisterRequest;
 
 class AuthController extends Controller
 {
@@ -20,7 +20,7 @@ class AuthController extends Controller
 
       return $this->successResponse(
          new UserResource($user),
-         'user Registered Successfully',
+         'user registered successfully',
          201,
       );
    }
@@ -40,10 +40,5 @@ class AuthController extends Controller
       $this->authService->logout($request->user());
 
       return $this->successResponse('user has been logout', 204);
-   }
-
-   public function user(Request $request): UserResource
-   {
-      return new UserResource($request->user());
    }
 }
