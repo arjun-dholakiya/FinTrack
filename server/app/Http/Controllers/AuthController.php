@@ -39,6 +39,6 @@ class AuthController extends Controller
    {
       $this->authService->logout($request->user());
 
-      return $this->successResponse('user has been logout', 204);
+      return $this->successResponse('null', 'user has been logout', 204);
    }
 }

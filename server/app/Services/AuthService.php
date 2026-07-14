@@ -38,7 +38,6 @@ class AuthService
    {
       $user->currentAccessToken()?->delete();
    }
-
    private function withToken(User $user): array
    {
       return [
