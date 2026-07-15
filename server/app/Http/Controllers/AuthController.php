@@ -35,6 +35,28 @@ class AuthController extends Controller
       );
    }
 
+   public function googleRedirect(): JsonResponse
+   {
+      // Return the Google OAuth URL so the frontend can redirect the user
+      $result = $this->authService->googleRedirectUrl();
+
+      return $this->successResponse(
+         $result,
+         'google redirect url generated successfully',
+      );
+   }
+
+   public function googleCallback(): JsonResponse
+   {
+      // Handle Google's callback and return a Sanctum token as JSON.
+      $result = $this->authService->handleGoogleCallback();
+
+      return $this->successResponse(
+         new AuthResource($result),
+         'user loggedin successfully',
+      );
+   }
+
    public function logout(Request $request): JsonResponse
    {
       $this->authService->logout($request->user());
